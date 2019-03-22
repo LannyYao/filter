@@ -20,13 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ActionController {
 
     @GetMapping(value = "/filter")
-    public Map<String, Object> filter() {
+    public Map<String, Object> filter(){
 
-        log.warn(STEP_IN, this.getClass().getName(), "filter()");
+        String methodName = "filter()";
+        log.warn(STEP_IN, this.getClass().getName(), methodName);
 
-        Map<String, Object> res = new HashMap<>();
-        res.put("result", "successful");
-        res.put("Method", "filter()");
+        Map<String, Object> res = getResponseByMethod(methodName);
 
         log.warn(STEP_OUT, this.getClass().getName(), "filter()");
         return res;
@@ -35,13 +34,32 @@ public class ActionController {
     @GetMapping(value = "/interceptor")
     public Map<String, Object> interceptor() {
 
-        log.warn(STEP_IN, this.getClass().getName(), "interceptor()");
+        String methodName = "interceptor()";
+        log.warn(STEP_IN, this.getClass().getName(), methodName);
 
+        Map<String, Object> res = getResponseByMethod(methodName);
+
+        log.warn(STEP_OUT, this.getClass().getName(), methodName);
+        return res;
+    }
+
+    @GetMapping(value = "/both")
+    public Map<String, Object> both() {
+
+        String methodName = "both()";
+        log.warn(STEP_IN, this.getClass().getName(), methodName);
+
+        Map<String, Object> res = getResponseByMethod(methodName);
+
+        log.warn(STEP_OUT, this.getClass().getName(), methodName);
+        return res;
+    }
+
+    private Map<String, Object> getResponseByMethod(String methodName) {
         Map<String, Object> res = new HashMap<>();
         res.put("result", "successful");
-        res.put("Method", "interceptor()");
+        res.put("Method", methodName);
 
-        log.warn(STEP_OUT, this.getClass().getName(), "interceptor()");
         return res;
     }
 }
