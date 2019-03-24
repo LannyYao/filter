@@ -27,7 +27,7 @@ public class ActionController {
 
         Map<String, Object> res = getResponseByMethod(methodName);
 
-        log.warn(STEP_OUT, this.getClass().getName(), "filter()");
+        log.warn(STEP_OUT, this.getClass().getName(), methodName);
         return res;
     }
 
@@ -47,6 +47,18 @@ public class ActionController {
     public Map<String, Object> both() {
 
         String methodName = "both()";
+        log.warn(STEP_IN, this.getClass().getName(), methodName);
+
+        Map<String, Object> res = getResponseByMethod(methodName);
+
+        log.warn(STEP_OUT, this.getClass().getName(), methodName);
+        return res;
+    }
+
+    @GetMapping(value = "/once")
+    public Map<String, Object> once(){
+
+        String methodName = "once()";
         log.warn(STEP_IN, this.getClass().getName(), methodName);
 
         Map<String, Object> res = getResponseByMethod(methodName);

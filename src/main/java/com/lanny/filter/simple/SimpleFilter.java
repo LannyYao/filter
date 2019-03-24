@@ -1,6 +1,7 @@
-package com.lanny.filter.filter;
+package com.lanny.filter.simple;
 
 import static com.lanny.filter.GlobalConstants.STEP_IN;
+import static com.lanny.filter.GlobalConstants.STEP_OUT;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -11,8 +12,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +23,8 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@Order(1)
-@WebFilter(urlPatterns = "/api/filter/*", filterName = "simpleFilter")
+//@WebFilter(urlPatterns = {"/api/filter/*"}, filterName = "simpleFilter")
+@WebFilter(urlPatterns = {"/api/*"}, filterName = "simpleFilter")
 public class SimpleFilter implements Filter {
 
 //    @Bean
@@ -60,7 +59,11 @@ public class SimpleFilter implements Filter {
         log.warn(STEP_IN, this.getClass().getName(), "doFilter()");
         // Do the next Filters and invoke the method in Controller
         chain.doFilter(request, response);
-        log.warn(STEP_IN, this.getClass().getName(), "doFilter()");
+        log.warn(STEP_OUT, this.getClass().getName(), "doFilter()");
+
+        //Invoke Controller twice
+//        chain.doFilter(request, response);
+//        log.warn("Do filter again");
 
     }
     @Override

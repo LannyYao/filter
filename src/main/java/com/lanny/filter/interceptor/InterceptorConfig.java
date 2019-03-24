@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author Lanny Yao
  * @date 3/22/2019 10:08 AM
  */
-@Configuration
+//@Configuration
 public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
     @Override
