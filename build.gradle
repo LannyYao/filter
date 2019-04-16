@@ -20,6 +20,7 @@ ext {
 
 dependencies {
 
+    compile "org.springframework.boot:spring-boot-starter-hateoas"
     compile ("org.springframework.cloud:spring-cloud-starter-zuul")
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

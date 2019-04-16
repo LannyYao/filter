@@ -50,12 +50,11 @@ public class RouterZuulFilter extends ZuulFilter {
 
         log.warn("Request will be routed to route host: {}", routeHost);
 
-        ctx.put(FilterConstants.REQUEST_URI_KEY, "/api/v3/jpa");
+        ctx.put(FilterConstants.REQUEST_URI_KEY, "/api/v3/teachers");
         final String requestURI = ctx.getRequest().getRequestURI();
 
         log.error("Request uri: {}", requestURI);
 //        ctx.addZuulRequestHeader(X_FORWARDED_PREFIX, "/api/v3/");
-
         return null;
     }
 }
